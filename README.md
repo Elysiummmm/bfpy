@@ -21,3 +21,4 @@ Open cmd in the directory the executable/source code is in and type `bfpy[.py] <
 - [ ] Add support for nested loops because i can't figure it out (someone help please)
 - [ ] Libraries or Modules
 - [ ] Add the ability to build BrainFuck to an executable
+- [ ] Add brainloller support
