@@ -3,8 +3,7 @@
 
 *with additional functionality when i add it*
 
-## Installation
-### From source code
+## Installation from source code
 1. Download/Clone the source code
 2. Run `setup.bat` or `setup.sh` in `build-scripts`
 3. Either "compile" it by yourself, its easy ([here](#compiling)) or download python and run the python file
@@ -19,4 +18,6 @@ Open cmd in the directory the executable/source code is in and type `bfpy[.py] <
 
 ## TODO
 - [x] Basic Compiler
-- [ ] 
+- [ ] Add support for nested loops because i can't figure it out (someone help please)
+- [ ] Libraries or Modules
+- [ ] Add the ability to build BrainFuck to an executable
