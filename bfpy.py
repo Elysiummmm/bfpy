@@ -2,6 +2,7 @@ import termcolor
 import colorama
 import os
 import platform
+from PIL import Image
 from sys import argv
 
 colorama.init() # windows compatibility for cprint
@@ -68,12 +69,15 @@ cellPointer = 0
 loopStart = 0
 inLoop = False
 
+# brainloller vars
+running = True
+
 # other vars
 line = 0
 char = 0
 
-if len(argv) == 1 or not argv[1] in ["build", "run"]:
-    termcolor.cprint("Please provide a valid mode! Usage: bfpy (run|build) (file)", 'red')
+if len(argv) == 1 or not argv[1] in ["lol", "run"]:
+    termcolor.cprint("Please provide a valid mode! Usage: bfpy (run|lol) (file)", 'red')
 elif argv[1] == "run":
     # open and read file
     file = open(argv[2], 'r')
@@ -100,3 +104,35 @@ elif argv[1] == "run":
             elif line[char] == ",":
                 inputIntoCurrentCell()
             char += 1
+elif argv[1] == "lol":
+    img = Image.open(argv[2])
+    pix = img.load()
+    width, height = img.size
+    x = 0
+    y = 0
+    
+    while running:
+        rgb = (pix[x, y][0], pix[x, y][1], pix[x, y][2])
+
+        if rgb == (0,255,0):
+            addToCurrentCell()
+        elif rgb == (0,128,0):
+            subFromCurrentCell()
+        elif rgb == (255,0,0):
+            goToNextCell()
+        elif rgb == (128,0,0):
+            goToPreviousCell()
+        elif rgb == (255,255,0):
+            pass # todo
+        elif rgb == (128,128,0):
+            pass # todo
+        elif rgb == (0,0,255):
+            printCurrentCell()
+        elif rgb == (0,0,128):
+            inputIntoCurrentCell()
+        elif rgb == (0,255,255):
+            pass # todo
+        elif rgb == (0,128,128):
+            pass # todo
+
+        x += 1
