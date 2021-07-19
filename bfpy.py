@@ -66,6 +66,9 @@ inLoop = False
 
 # brainloller vars
 running = True
+x = 0
+y = 0
+direction = 2
 
 # other vars
 line = 0
@@ -109,6 +112,8 @@ elif argv[1] == "lol":
     while running:
         rgb = (pix[x, y][0], pix[x, y][1], pix[x, y][2])
 
+        if "--raw" in argv: print(rgb)
+
         if rgb == (0,255,0):
             addToCurrentCell()
         elif rgb == (0,128,0):
@@ -118,16 +123,27 @@ elif argv[1] == "lol":
         elif rgb == (128,0,0):
             goToPreviousCell()
         elif rgb == (255,255,0):
-            pass # todo
+            startLoop()
         elif rgb == (128,128,0):
-            pass # todo
+            endLoop()
         elif rgb == (0,0,255):
             printCurrentCell()
         elif rgb == (0,0,128):
             inputIntoCurrentCell()
         elif rgb == (0,255,255):
-            pass # todo
+            direction += 1
         elif rgb == (0,128,128):
-            pass # todo
+            direction -= 1
 
-        x += 1
+        if direction == 5: direction = 1
+        if direction == 0: direction = 4
+
+        if direction == 1: y -= 1
+        if direction == 2: x += 1
+        if direction == 3: y += 1
+        if direction == 4: x -= 1
+
+        try:
+            pix[x, y]
+        except:
+            exit(0)
