@@ -7,11 +7,6 @@ from sys import argv
 
 colorama.init() # windows compatibility for cprint
 
-# helper functions
-def throwError(error):
-    termcolor.cprint("Error: " + error, 'red')
-    exit(1)
-
 # code functions
 def addToCurrentCell():
     global register, cellPointer
@@ -31,7 +26,7 @@ def goToNextCell():
 
 def goToPreviousCell():
     global register, cellPointer
-    if cellPointer == 0: throwError("tried to move past first cell")
+    if cellPointer == 0: return
     cellPointer -= 1
 
 def startLoop():
